@@ -26,6 +26,20 @@ class Book {
   }
 }
 
+const clicked = () => {
+  addBookfromForm()
+  renderTable()
+}
+
+function addBookfromForm () {
+  const newBook = new Book(
+    document.getElementById('bookTitle').value,
+    document.getElementById('bookAuthor').value,
+    document.getElementById('bookRead').value
+  )
+  myLibrary.push(newBook)
+}
+
 const renderTable = () => {
   const tbl = document.createElement('table')
   const tblBody = document.createElement('tbody')
