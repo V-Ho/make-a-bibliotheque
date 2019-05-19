@@ -2,28 +2,38 @@
 
 let myLibrary = [
   {
-    name: 'Blindness',
+    title: 'Blindness',
     author: 'José Saramago',
     read: true
   },
   {
-    name: 'Kafka on the Shore',
+    title: 'Kafka on the Shore',
     author: 'Haruki Murakami',
     read: true
   },
   {
-    name: 'Sapiens',
+    title: 'Sapiens',
     author: 'Yuval Noah Harari',
     read: true
   }
 ]
-// const book1 = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'not read')
-// console.log(book1.info())
+
+class Book {
+  constructor (title, author, read) {
+    this.title = title
+    this.author = author
+    this.read = read
+  }
+}
 
 const renderTable = () => {
   const tbl = document.createElement('table')
   const tblBody = document.createElement('tbody')
   const body = document.getElementsByTagName('body')[0]
+  const theader = document.createElement('thead')
+  const libFields = Object.keys(myLibrary[0])
+  console.log('fields', libFields)
+  console.log(libFields.length)
 
   // create rows
   let currentRow
@@ -32,16 +42,16 @@ const renderTable = () => {
 
     // create cells
     currentRow = myLibrary[i]
-    for (let j = 0; j < Object.keys(currentRow).length; j++) {
+    for (let j = 0; j < 3; j++) {
       let cell = document.createElement('td')
       cell.setAttribute('class', `cell${j}`)
 
-      const cellBookName = document.createTextNode(currentRow.name)
+      const cellBookTitle = document.createTextNode(currentRow.title)
       const cellBookAuthor = document.createTextNode(currentRow.author)
       const cellBookRead = document.createTextNode(currentRow.read)
 
       if (cell.className === 'cell0') {
-        cell.appendChild(cellBookName)
+        cell.appendChild(cellBookTitle)
       } else if (cell.className === 'cell1') {
         cell.appendChild(cellBookAuthor)
       } else {
@@ -53,7 +63,7 @@ const renderTable = () => {
 
     tblBody.appendChild(row)
   }
-
+  tbl.appendChild(theader)
   tbl.appendChild(tblBody)
   body.appendChild(tbl)
 }
