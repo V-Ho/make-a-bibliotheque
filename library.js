@@ -26,9 +26,19 @@ class Book {
   }
 }
 
+const showForm = () => {
+  document.getElementById('form').style.display = 'block'
+  hideBtn()
+}
+
 const clicked = () => {
   addBookfromForm()
   renderTable()
+  // location.reload(true)
+}
+
+const hideBtn = () => {
+  document.getElementById('addBookBtn').style.display = 'none'
 }
 
 function addBookfromForm () {
@@ -83,3 +93,11 @@ const renderTable = () => {
 }
 
 window.onload = renderTable()
+
+// store data in localStorage
+const populateStorage = () => {
+  localStorage.setItem('books', JSON.stringify(myLibrary))
+  console.log(localStorage) 
+}
+
+populateStorage()
