@@ -33,11 +33,15 @@ const showForm = () => {
 
 const submitBook = () => {
   addBookfromForm()
+
+  // show only one updated table
+  const existingTable = document.getElementsByTagName('table')[0]
+  existingTable.remove()
   renderTable()
 }
 
 const hideBtn = () => {
-  document.getElementById('addBookBtn').style.display = 'none'
+  document.getElementById('showFormBtn').style.display = 'none'
 }
 
 
