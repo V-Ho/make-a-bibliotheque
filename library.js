@@ -72,6 +72,24 @@ const renderTable = () => {
   const body = document.getElementsByTagName('body')[0]
   const theader = document.createElement('thead')
 
+  // create header row
+  let headerCol = []
+  for (let i = 0; i < 3; i++) {
+    for (let key in myLibrary[i]) {
+      if (headerCol.indexOf(key) === -1) {
+        headerCol.push(key)
+      }
+    }
+  }
+
+  const hRow = document.createElement('tr')
+  for (let i = 0; i < headerCol.length; i++) {
+    const th = document.createElement('th')
+    th.innerHTML = headerCol[i]
+    hRow.appendChild(th)
+  }
+  theader.appendChild(hRow)
+
   // create rows
   let currentRow
   for (let i = 0; i < booksArray.length; i++) {
