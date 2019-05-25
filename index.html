@@ -12,7 +12,7 @@
 
   <h1>Hello Library</h1>
 
-  <div class="form-row">
+  <div id="form" class="form-row" style="display: none">
     <label for="bookTitle">Title</label>
     <input id="bookTitle" name="bookTitle" type="text"/>
     <br />
@@ -22,8 +22,10 @@
     <label for="bookRead">Read</label>
     <input id="bookRead" name="bookRead" type="text" />
     <br />
-    <button name="Submit Book" value="Click" onClick="clicked()">Submit Button</button>
+    <button name="Submit Book" value="Click" onClick="submitBook()">Submit Button</button>
   </div>
+
+  <input type="button" id="addBookBtn" value="Add another book" onClick="showForm()" />
 
 </body>
 </html>

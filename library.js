@@ -31,23 +31,38 @@ const showForm = () => {
   hideBtn()
 }
 
-const clicked = () => {
+const submitBook = () => {
   addBookfromForm()
   renderTable()
-  // location.reload(true)
 }
 
 const hideBtn = () => {
   document.getElementById('addBookBtn').style.display = 'none'
 }
 
-function addBookfromForm () {
+
+// store book data in localStorage
+let booksArray
+const populateStorage = () => {
+  // setItem stores key with values in localStorage
+  localStorage.setItem('booksArray', JSON.stringify(myLibrary)) 
+
+  // if localStorage exists, store as booksArray otherwise store as array
+  booksArray = JSON.parse(localStorage.getItem('booksArray' || '[]'))
+}
+
+populateStorage()
+
+const addBookfromForm = () => {
   const newBook = new Book(
     document.getElementById('bookTitle').value,
     document.getElementById('bookAuthor').value,
     document.getElementById('bookRead').value
   )
-  myLibrary.push(newBook)
+
+  // update localStorage with new book entry
+  localStorage.setItem('newBook', JSON.stringify(newBook))
+  booksArray.push(newBook)
 }
 
 const renderTable = () => {
@@ -55,17 +70,14 @@ const renderTable = () => {
   const tblBody = document.createElement('tbody')
   const body = document.getElementsByTagName('body')[0]
   const theader = document.createElement('thead')
-  const libFields = Object.keys(myLibrary[0])
-  console.log('fields', libFields)
-  console.log(libFields.length)
 
   // create rows
   let currentRow
-  for (let i = 0; i < myLibrary.length; i++) {
+  for (let i = 0; i < booksArray.length; i++) {
     const row = document.createElement('tr')
 
     // create cells
-    currentRow = myLibrary[i]
+    currentRow = booksArray[i]
     for (let j = 0; j < 3; j++) {
       let cell = document.createElement('td')
       cell.setAttribute('class', `cell${j}`)
@@ -93,11 +105,3 @@ const renderTable = () => {
 }
 
 window.onload = renderTable()
-
-// store data in localStorage
-const populateStorage = () => {
-  localStorage.setItem('books', JSON.stringify(myLibrary))
-  console.log(localStorage) 
-}
-
-populateStorage()
