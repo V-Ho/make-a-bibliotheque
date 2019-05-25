@@ -5,27 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Library Page</title>
-  <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="./main.css">
   <script defer src="./library.js"></script>
 </head>
 <body>
 
   <h1>Hello Library</h1>
 
-  <div id="form" class="form-row" style="display: none">
-    <label for="bookTitle">Title</label>
-    <input id="bookTitle" name="bookTitle" type="text"/>
+  <!-- <div id="form" class="form-row" style="display: none">
+    <label for="bookTitle">Title</label> -->
+  <form action ="#" id="form" class="form-row" style="display: none">
+    <input id="bookTitle" name="bookTitle" type="text" placeholder="Book Title" required/>
     <br />
-    <label for="bookAuthor">Author</label>
-    <input id="bookAuthor" name="bookAuthor" type="text" />
+    <!-- <label for="bookAuthor">Author</label> -->
+    <input id="bookAuthor" name="bookAuthor" type="text" placeholder="Author" required/>
     <br />
-    <label for="bookRead">Read</label>
-    <input id="bookRead" name="bookRead" type="text" />
+    <!-- <label for="bookRead">Read</label> -->
+    <input id="bookRead" name="bookRead" type="text" placeholder="Book read (y/n)"/>
     <br />
-    <button name="Submit Book" value="Click" onClick="submitBook()">Submit Button</button>
-  </div>
+    <button class="submitBtn" value="Click" onClick="submitBook()">Submit Book</button>
+  </form>
+  <!-- </div> -->
 
-  <input type="button" id="addBookBtn" value="Add another book" onClick="showForm()" />
+  <button id="showFormBtn" onClick="showForm()">Add another book</button>
 
 </body>
 </html>

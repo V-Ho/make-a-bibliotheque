@@ -33,6 +33,7 @@ const showForm = () => {
 
 const submitBook = () => {
   addBookfromForm()
+  document.getElementById('form').reset()
 
   // show only one updated table
   const existingTable = document.getElementsByTagName('table')[0]
@@ -44,14 +45,10 @@ const hideBtn = () => {
   document.getElementById('showFormBtn').style.display = 'none'
 }
 
-
 // store book data in localStorage
 let booksArray
 const populateStorage = () => {
-  // setItem stores key with values in localStorage
   localStorage.setItem('booksArray', JSON.stringify(myLibrary)) 
-
-  // if localStorage exists, store as booksArray otherwise store as array
   booksArray = JSON.parse(localStorage.getItem('booksArray' || '[]'))
 }
 
